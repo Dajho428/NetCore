@@ -18,7 +18,7 @@ namespace CoreEscuela
             ImpimirCursosEscuela(engine.Escuela);
             var listaObjetos = engine.GetObjetosEscuela();
 
-            var listaILugar = from obj in listaObjetos
+            var listaILugar = from obj in listaObjetos// sentencia linq que nos ayuda a buscar filtrando haciendo querys
                               where obj is Alumno
                               select (Alumno)obj;
 
