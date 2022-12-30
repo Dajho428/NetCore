@@ -50,7 +50,7 @@ namespace CoreEscuela
                             break;
                         case LlaveDiccionario.Curso:
                             var curtmp = val as Curso;
-                            if(curtmp != null)
+                            if (curtmp != null)
                             {
                                 int count = curtmp.Alumnos.Count;
                                 Console.WriteLine("Curso: " + val.Nombre + " Cantidad Alumnos: " + count);
@@ -64,6 +64,8 @@ namespace CoreEscuela
             }
         }
 
+        // las constantes se trabajan de la siguiente manera 
+        //const string CONSTANTE ="Constante";
         public Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> GetDiccionarioObjetos()
         {
             var diccionario = new Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>>();
@@ -95,6 +97,11 @@ namespace CoreEscuela
             return diccionario;
         }
 
+        /*
+        IReadOnlyList es una interfaz que permite retornar una lista pero la cual no es modificable,
+        cuando se retorna una lista de manera normal esta se puede modificar o manipular desde donde
+        llamen el metodo
+        */
         public IReadOnlyList<ObjetoEscuelaBase> GetObjetosEscuela(
             bool traeEvaluaciones = true,
             bool traeAlumnos = true,
@@ -186,7 +193,7 @@ namespace CoreEscuela
                 }
             }
 
-            return listaObj.AsReadOnly();
+            return listaObj.AsReadOnly();// se pone AsReadOnly para poder que no sea modificable la lista 
         }
 
         #region Métodos de Carga
@@ -205,9 +212,7 @@ namespace CoreEscuela
                             {
                                 Asignatura = asignatura,
                                 Nombre = $"{asignatura.Nombre} Ev#{i + 1}",
-                                Nota = MathF.Round(
-                                    5 * (float)rnd.NextDouble()
-                                    ,2),
+                                Nota = MathF.Round(5 * (float)rnd.NextDouble(), 2),
                                 Alumno = alumno
                             };
                             alumno.Evaluaciones.Add(ev);

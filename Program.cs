@@ -25,9 +25,14 @@ namespace CoreEscuela
 
             dicccionario.Add(23, "Lorem Ipsum");
 
-            foreach (var keyValPair in dicccionario)
+            foreach (var keyValPair in dicccionario) // KeyValPair es par llave valor
             {
                 WriteLine($"Key: {keyValPair.Key} Valor: {keyValPair.Value}");
+                //para devolver un valor especifico del diccionario lo busco por su llave 
+                //Ejemplo: WriteLine(diccionario[23]); le estoy diciendo que acceda al diccionario
+                // y me traiga el resultado de la key 23
+                // Las llaves del diccionario pueden ser int, string float y son unicas, se puede modificar su valor
+                
             }
 
             var dictmp = engine.GetDiccionarioObjetos();
