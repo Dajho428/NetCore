@@ -7,7 +7,7 @@ namespace CoreEscuela.App
 {
     public class Reporteador
     {
-        Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> _diccionario;
+        Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> _diccionario; //el underline significa que el campo es privado.
         public Reporteador(Dictionary<LlaveDiccionario, IEnumerable<ObjetoEscuelaBase>> dicObsEsc)
         {
             if (dicObsEsc == null)
@@ -28,6 +28,7 @@ namespace CoreEscuela.App
             }
         }
 
+// se crea la sobrecarga del metodo para cuando no se pase el parametro de salida
         public IEnumerable<string> GetListaAsignaturas()
         {
             return GetListaAsignaturas(
@@ -40,7 +41,7 @@ namespace CoreEscuela.App
             listaEvaluaciones = GetListaEvaluaciones();
 
             return (from Evaluación ev in listaEvaluaciones
-                    select ev.Asignatura.Nombre).Distinct();
+                    select ev.Asignatura.Nombre).Distinct();// el distinct trae cada cosa que sea diferente mas no repetidos
         }
 
         public Dictionary<string, IEnumerable<Evaluación>> GetDicEvaluaXAsig()
