@@ -11,8 +11,11 @@ namespace CoreEscuela
     {
         static void Main(string[] args)
         {
-            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento;
-            AppDomain.CurrentDomain.ProcessExit += (o, s) => Printer.Beep(2000, 1000, 1);
+            AppDomain.CurrentDomain.ProcessExit += AccionDelEvento; // lanza eventos cuando se va a terminar la ejecucion del programa
+            //siempre y cuando el flujo sea normal es decir sin lanzar excepciones. esto
+            //funciona como un delegado
+            AppDomain.CurrentDomain.ProcessExit += (o, s) => Printer.Beep(2000, 1000, 1); // sobrecargar el metodo con una expresion lambda
+            // para que le sume algo mas al metodo
 
             var engine = new EscuelaEngine();
             engine.Inicializar();
